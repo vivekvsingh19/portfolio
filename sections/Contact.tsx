@@ -5,18 +5,50 @@ import { Mail, MapPin, Send, Linkedin, Twitter, Github, CheckCircle, Loader2 } f
 import { PROFILE, SOCIAL_LINKS } from '../constants';
 
 export const Contact: React.FC = () => {
-  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState('submitting');
     
-    // Simulate network request
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setFormState('success');
-    
-    // Reset after showing success message
-    setTimeout(() => setFormState('idle'), 3000);
+    try {
+      // Using Formspree for email submission
+      const response = await fetch('https://formspree.io/f/mzzzqojp', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setFormState('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setFormState('idle'), 4000);
+      } else {
+        setFormState('error');
+        setTimeout(() => setFormState('idle'), 3000);
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setFormState('error');
+      setTimeout(() => setFormState('idle'), 3000);
+    }
   };
 
   return (
@@ -72,25 +104,57 @@ export const Contact: React.FC = () => {
                     <div className="grid grid-cols-2 gap-6 mb-6">
                         <div className="col-span-2 sm:col-span-1">
                             <label className="block text-sm font-medium text-slate-400 mb-2">Name</label>
-                            <input required type="text" className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors" placeholder="John Doe" />
+                            <input 
+                              required 
+                              type="text" 
+                              name="name"
+                              value={formData.name}
+                              onChange={handleChange}
+                              className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors" 
+                              placeholder="Your Name" 
+                            />
                         </div>
                         <div className="col-span-2 sm:col-span-1">
                             <label className="block text-sm font-medium text-slate-400 mb-2">Email</label>
-                            <input required type="email" className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors" placeholder="john@example.com" />
+                            <input 
+                              required 
+                              type="email" 
+                              name="email"
+                              value={formData.email}
+                              onChange={handleChange}
+                              className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors" 
+                              placeholder="your@email.com" 
+                            />
                         </div>
                     </div>
                     <div className="mb-6">
                         <label className="block text-sm font-medium text-slate-400 mb-2">Subject</label>
-                        <select className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors">
-                            <option>Project Inquiry</option>
-                            <option>Consulting</option>
-                            <option>Speaking Opportunity</option>
-                            <option>Other</option>
+                        <select 
+                          name="subject"
+                          value={formData.subject}
+                          onChange={handleChange}
+                          required
+                          className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors"
+                        >
+                            <option value="">Select a subject...</option>
+                            <option value="Project Inquiry">Project Inquiry</option>
+                            <option value="Consulting">Consulting</option>
+                            <option value="Speaking Opportunity">Speaking Opportunity</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     <div className="mb-8">
                         <label className="block text-sm font-medium text-slate-400 mb-2">Message</label>
-                        <textarea required rows={4} className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors" placeholder="Tell me about your project..."></textarea>
+                        <textarea 
+                          required 
+                          rows={4} 
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors resize-none" 
+                          placeholder="Tell me about your project or inquiry..."
+                        ></textarea>
                     </div>
                     
                     <button 
@@ -99,6 +163,8 @@ export const Contact: React.FC = () => {
                         className={`w-full py-4 rounded-lg font-bold text-white transition-all flex items-center justify-center gap-2 group ${
                             formState === 'success' 
                             ? 'bg-green-500 cursor-default' 
+                            : formState === 'error'
+                            ? 'bg-red-500 cursor-default'
                             : 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]'
                         }`}
                     >
@@ -110,7 +176,12 @@ export const Contact: React.FC = () => {
                         ) : formState === 'success' ? (
                             <>
                                 <CheckCircle size={18} />
-                                Message Sent!
+                                Message Sent! I'll get back to you soon
+                            </>
+                        ) : formState === 'error' ? (
+                            <>
+                                <Mail size={18} />
+                                Error sending message. Please try again.
                             </>
                         ) : (
                             <>

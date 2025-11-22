@@ -65,8 +65,9 @@ export const Projects: React.FC = () => {
             
             {/* Call to Action / GitHub Card */}
             <motion.a
-                href="https://github.com/"
+                href="https://github.com/vivekvsingh19"
                 target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -75,9 +76,9 @@ export const Projects: React.FC = () => {
                 <div className="w-16 h-16 rounded-full bg-slate-900 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-white/10 group-hover:border-cyan-500">
                     <Cpu size={32} className="text-slate-400 group-hover:text-cyan-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">View Source</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Explore More</h3>
                 <p className="text-slate-400 text-sm text-center max-w-[200px]">
-                    Explore experimental builds and open source contributions on GitHub.
+                    Check out more projects and open source contributions on GitHub.
                 </p>
             </motion.a>
         </div>

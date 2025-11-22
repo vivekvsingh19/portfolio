@@ -1,8 +1,23 @@
 {
-  "name": "nexgen-portfolio",
+  "name": "vivek-singh-portfolio",
+  "description": "A premium, interactive 3D developer portfolio built with React, TypeScript, and Three.js",
+  "version": "2.0.0",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "author": "Vivek Singh <vivekvsingh19@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vivekvsingh19/portfolio"
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "react",
+    "typescript",
+    "3d",
+    "three.js",
+    "vivekvsingh19"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
