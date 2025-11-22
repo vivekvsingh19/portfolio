@@ -103,7 +103,7 @@ export default defineConfig({
 
 **Cause**: Settings point to `main` branch or wrong source
 
-**Fix**: 
+**Fix**:
 1. Go to Settings → Pages
 2. Select `gh-pages` branch as source
 3. Wait 1 minute
