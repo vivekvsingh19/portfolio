@@ -152,7 +152,7 @@ Your GitHub repository will show:
 ```
 vivekvsingh19 / portfolio
 
-📝 A premium, interactive 3D developer portfolio built with React, 
+📝 A premium, interactive 3D developer portfolio built with React,
    TypeScript, and Three.js
 
 📌 portfolio  developer  react  typescript  3d
