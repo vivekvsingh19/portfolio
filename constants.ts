@@ -7,7 +7,7 @@ export const PROFILE = {
   email: 'vivekvsingh19@gmail.com',
   location: 'Sasaram, Bihar, India',
   // Using GitHub avatar as a reliable source
-  avatarUrl: 'https://github.com/vivekvsingh19.png' 
+  avatarUrl: 'https://github.com/vivekvsingh19.png'
 };
 
 export const SOCIAL_LINKS = {
@@ -53,25 +53,25 @@ export const CURRENT_FOCUS = {
 };
 
 export const DEV_LOGS = [
-  { 
-    cmd: 'git clone https://github.com/vivekvsingh19/portfolio.git', 
+  {
+    cmd: 'git clone https://github.com/vivekvsingh19/portfolio.git',
     output: 'Cloning into "portfolio"...\nremote: Enumerating objects: 142, done.\nremote: Total 142 (delta 40), reused 0 (delta 0)\nReceiving objects: 100% (142/142), 1.24 MiB | 2.40 MiB/s, done.',
-    delay: 800 
+    delay: 800
   },
-  { 
-    cmd: 'cd portfolio', 
-    output: '', 
-    delay: 200 
+  {
+    cmd: 'cd portfolio',
+    output: '',
+    delay: 200
   },
-  { 
-    cmd: 'npm install', 
-    output: 'added 842 packages in 2s\n124 packages are looking for funding\n  run `npm fund` for details', 
-    delay: 1000 
+  {
+    cmd: 'npm install',
+    output: 'added 842 packages in 2s\n124 packages are looking for funding\n  run `npm fund` for details',
+    delay: 1000
   },
-  { 
-    cmd: 'npm run dev', 
-    output: 'ready started server on 0.0.0.0:3000, url: http://localhost:3000\n> Ready on http://localhost:3000', 
-    delay: 1500 
+  {
+    cmd: 'npm run dev',
+    output: 'ready started server on 0.0.0.0:3000, url: http://localhost:3000\n> Ready on http://localhost:3000',
+    delay: 1500
   },
 ];
 
