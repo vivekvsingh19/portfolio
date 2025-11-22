@@ -192,7 +192,7 @@ export const Hero: React.FC = () => {
               href="#projects" 
               className="group relative px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-lg flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] overflow-hidden w-full sm:w-auto"
             >
-              <span className="relative z-10 flex items-center gap-2">View Work <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" /></span>
+              <span className="relative z-10 flex items-center gap-2">Explore Projects <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" /></span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </a>
             

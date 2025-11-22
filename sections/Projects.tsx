@@ -11,7 +11,7 @@ export const Projects: React.FC = () => {
        {/* Hexagon & Circuit Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-
+      
       {/* Decorative Glows */}
       <div className="absolute top-1/4 left-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-900/20 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-cyan-900/10 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
@@ -19,7 +19,7 @@ export const Projects: React.FC = () => {
       <div className="max-w-screen-2xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
-            <motion.div
+            <motion.div 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -33,7 +33,7 @@ export const Projects: React.FC = () => {
                 </h2>
             </motion.div>
 
-            <motion.div
+            <motion.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -62,12 +62,11 @@ export const Projects: React.FC = () => {
                     <ProjectCard project={project} featured={index === 0} />
                 </motion.div>
             ))}
-
+            
             {/* Call to Action / GitHub Card */}
             <motion.a
-                href="https://github.com/vivekvsingh19"
+                href="https://github.com/"
                 target="_blank"
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -76,9 +75,9 @@ export const Projects: React.FC = () => {
                 <div className="w-16 h-16 rounded-full bg-slate-900 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-white/10 group-hover:border-cyan-500">
                     <Cpu size={32} className="text-slate-400 group-hover:text-cyan-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Explore More</h3>
+                <h3 className="text-xl font-bold text-white mb-2">View Source</h3>
                 <p className="text-slate-400 text-sm text-center max-w-[200px]">
-                    Check out more projects and open source contributions on GitHub.
+                    Explore experimental builds and open source contributions on GitHub.
                 </p>
             </motion.a>
         </div>

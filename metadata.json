@@ -1,7 +1,5 @@
 {
-  "name": "Vivek Singh - Portfolio",
-  "description": "A premium, interactive 3D developer portfolio built with React, TypeScript, and Three.js. Showcasing full-stack development, AI engineering, and mobile app expertise.",
-  "keywords": ["portfolio", "developer", "react", "typescript", "3d", "vivekvsingh19"],
-  "author": "Vivek Singh",
-  "repository": "https://github.com/vivekvsingh19/portfolio"
+  "name": "NexGen Portfolio",
+  "description": "A premium, 3D-themed developer portfolio for a full-stack and AI engineer, featuring interactive 3D elements and a futuristic aesthetic.",
+  "requestFramePermissions": []
 }
